@@ -1,13 +1,8 @@
 module.exports = function(grunt) {
 
-    grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
-
     grunt.initConfig({
 
-        clean: ["dist"],
+        clean: ['dist'],
 
         uglify: {
 
@@ -42,7 +37,7 @@ module.exports = function(grunt) {
 
         copy: {
 
-            main: {
+            my_target: {
 
                 files: [
 
@@ -58,5 +53,12 @@ module.exports = function(grunt) {
         }
 
     });
+
+    grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-cssmin");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
+
+    grunt.registerTask('dist', ['clean', 'uglify', 'cssmin', 'copy']);
 
 };
