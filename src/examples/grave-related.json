@@ -1,0 +1,482 @@
+{"query": {
+    "count": 21,
+    "created": "2014-07-30T20:55:34Z",
+    "lang": "en-US",
+    "results": {
+        "tr": [
+            {
+                "id": "recRow_122",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Dismember/122",
+                            "content": "Dismember"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_122",
+                            "content": "101"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_7",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Entombed/7",
+                            "content": "Entombed"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal/Death 'n' Roll"
+                    },
+                    {
+                        "span": {
+                            "id": "score_7",
+                            "content": "95"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_233",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Bloodbath/233",
+                            "content": "Bloodbath"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_233",
+                            "content": "81"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_359",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Unleashed/359",
+                            "content": "Unleashed"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_359",
+                            "content": "74"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_641",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Asphyx/641",
+                            "content": "Asphyx"
+                        }
+                    },
+                    {
+                        "p": "Netherlands"
+                    },
+                    {
+                        "p": "Death/Doom Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_641",
+                            "content": "56"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_234",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Bolt_Thrower/234",
+                            "content": "Bolt Thrower"
+                        }
+                    },
+                    {
+                        "p": "United Kingdom"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_234",
+                            "content": "52"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_319",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Vomitory/319",
+                            "content": "Vomitory"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_319",
+                            "content": "52"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_830",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Carnage/830",
+                            "content": "Carnage"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_830",
+                            "content": "43"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_14076",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Nihilist/14076",
+                            "content": "Nihilist"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_14076",
+                            "content": "37"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_3540285750",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Entrails/3540285750",
+                            "content": "Entrails"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_3540285750",
+                            "content": "34"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_504",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Benediction/504",
+                            "content": "Benediction"
+                        }
+                    },
+                    {
+                        "p": "United Kingdom"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_504",
+                            "content": "27"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_105288",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Hail_of_Bullets/105288",
+                            "content": "Hail of Bullets"
+                        }
+                    },
+                    {
+                        "p": "Netherlands"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_105288",
+                            "content": "27"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_847",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Fleshcrawl/847",
+                            "content": "Fleshcrawl"
+                        }
+                    },
+                    {
+                        "p": "Germany"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_847",
+                            "content": "25"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_96",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Hypocrisy/96",
+                            "content": "Hypocrisy"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal (1990-1994), Melodic Death Metal (1995-)"
+                    },
+                    {
+                        "span": {
+                            "id": "score_96",
+                            "content": "17"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_3370",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Paganizer/3370",
+                            "content": "Paganizer"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_3370",
+                            "content": "17"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_3540332709",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Vallenfyre/3540332709",
+                            "content": "Vallenfyre"
+                        }
+                    },
+                    {
+                        "p": "United Kingdom"
+                    },
+                    {
+                        "p": "Death Metal with Doom influences"
+                    },
+                    {
+                        "span": {
+                            "id": "score_3540332709",
+                            "content": "17"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_19145",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Evocation/19145",
+                            "content": "Evocation"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_19145",
+                            "content": "15"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_633",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Centinex/633",
+                            "content": "Centinex"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_633",
+                            "content": "14"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_11723",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Funebrarum/11723",
+                            "content": "Funebrarum"
+                        }
+                    },
+                    {
+                        "p": "United States"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_11723",
+                            "content": "13"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "recRow_3540265816",
+                "td": [
+                    {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Miasmal/3540265816",
+                            "content": "Miasmal"
+                        }
+                    },
+                    {
+                        "p": "Sweden"
+                    },
+                    {
+                        "p": "Death Metal"
+                    },
+                    {
+                        "span": {
+                            "id": "score_3540265816",
+                            "content": "13"
+                        }
+                    }
+                ]
+            },
+            {
+                "td": {
+                    "colspan": "5",
+                    "id": "show_more",
+                    "p": {
+                        "a": {
+                            "href": "http://www.metal-archives.com/bands/Grave/1020?showMoreSimilar=1#Similar_artists",
+                            "content": "see more"
+                        },
+                        "content": "(\n              )"
+                    }
+                }
+            }
+        ]
+    }
+}}

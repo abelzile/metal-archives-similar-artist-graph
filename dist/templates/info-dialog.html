@@ -1,0 +1,14 @@
+<p class="info-dialog-section">
+    <label>Country:</label>
+    <span><img class="country-flag" src="<%= flagUrl %>" alt="<%= country %>" /> <%= country %></span>
+</p>
+
+<p class="info-dialog-section">
+    <label>Genre: </label>
+    <span><%= genre %></span>
+</p>
+
+<p class="info-dialog-section">
+    <label>Link: </label>
+    <span><a href="http://metal-archives.com/bands/<%= encodeURIComponent(name) %>/<%= id %>" target="_blank"><%= name %></a> on metal-archives.com</span>
+</p>

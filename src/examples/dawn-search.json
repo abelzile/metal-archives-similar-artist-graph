@@ -1,0 +1,34 @@
+{
+    "error": "",
+    "iTotalRecords": 5,
+    "iTotalDisplayRecords": 5,
+    "sEcho": 1,
+    "aaData": [
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dawn/3540280714\">Dawn</a>  <!-- 10.685998 -->" ,
+            "Death Metal" ,
+            "Germany"    		]
+        ,
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dawn/8408\">Dawn</a>  <!-- 10.685998 -->" ,
+            "Death Metal" ,
+            "Germany"    		]
+        ,
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dawn/92652\">Dawn</a>  <!-- 10.685998 -->" ,
+            "Thrash Metal" ,
+            "Italy"    		]
+        ,
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dawn/1455\">Dawn</a>  <!-- 10.685998 -->" ,
+            "Death Metal (early), Melodic Black Metal (later)" ,
+            "Sweden"    		]
+        ,
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dawn/16712\">Dawn</a>  <!-- 10.685998 -->" ,
+            "Melodic Heavy Metal" ,
+            "United Kingdom"    		]
+    ]
+}
+//http://www.metal-archives.com/search/ajax-advanced/searching/bands/?bandName=Dawn&exactBandMatch=1
+

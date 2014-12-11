@@ -1,0 +1,151 @@
+//select * from html where url = 'http://www.metal-archives.com/band/ajax-recommendations/id/4228' and xpath = '//tbody/tr'
+
+mycallback({
+    "query": {
+        "count": 6,
+        "created": "2014-08-06T01:54:14Z",
+        "lang": "en-US",
+        "results": {
+            "tr": [
+                {
+                    "id": "recRow_141",
+                    "td": [
+                        {
+                            "a": {
+                                "href": "http://www.metal-archives.com/bands/Death/141",
+                                "content": "Death"
+                            }
+                        },
+                        {
+                            "p": "United States"
+                        },
+                        {
+                            "p": "Death Metal (early), Death/Progressive Metal (later)"
+                        },
+                        {
+                            "span": {
+                                "id": "score_141",
+                                "content": "9"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "recRow_16129",
+                    "td": [
+                        {
+                            "a": {
+                                "href": "http://www.metal-archives.com/bands/Hieronymus_Bosch/16129",
+                                "content": "Hieronymus Bosch"
+                            }
+                        },
+                        {
+                            "p": "Russia"
+                        },
+                        {
+                            "p": "Progressive Death Metal"
+                        },
+                        {
+                            "span": {
+                                "id": "score_16129",
+                                "content": "8"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "recRow_178",
+                    "td": [
+                        {
+                            "a": {
+                                "href": "http://www.metal-archives.com/bands/Theory_in_Practice/178",
+                                "content": "Theory in Practice"
+                            }
+                        },
+                        {
+                            "p": "Sweden"
+                        },
+                        {
+                            "p": "Technical Death Metal"
+                        },
+                        {
+                            "span": {
+                                "id": "score_178",
+                                "content": "7"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "recRow_7175",
+                    "td": [
+                        {
+                            "a": {
+                                "href": "http://www.metal-archives.com/bands/Symbyosis/7175",
+                                "content": "Symbyosis"
+                            }
+                        },
+                        {
+                            "p": "France"
+                        },
+                        {
+                            "p": "Progressive Death Metal"
+                        },
+                        {
+                            "span": {
+                                "id": "score_7175",
+                                "content": "6"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "recRow_63100",
+                    "td": [
+                        {
+                            "a": {
+                                "href": "http://www.metal-archives.com/bands/Obscura/63100",
+                                "content": "Obscura"
+                            }
+                        },
+                        {
+                            "p": "Germany"
+                        },
+                        {
+                            "p": "Progressive/Technical Death Metal"
+                        },
+                        {
+                            "span": {
+                                "id": "score_63100",
+                                "content": "5"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "recRow_3763",
+                    "td": [
+                        {
+                            "a": {
+                                "href": "http://www.metal-archives.com/bands/Neglected_Fields/3763",
+                                "content": "Neglected Fields"
+                            }
+                        },
+                        {
+                            "p": "Latvia"
+                        },
+                        {
+                            "p": "Technical/Progressive Death Metal"
+                        },
+                        {
+                            "span": {
+                                "id": "score_3763",
+                                "content": "3"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+});

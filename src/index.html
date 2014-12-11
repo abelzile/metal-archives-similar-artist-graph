@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Metal Archive Similar Artist Map</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./styles/styles.css" rel="stylesheet">
+    <link href="./scripts/lib/jqueryui-custom/jquery-ui.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div id="the-app">
+
+        <div id="graph">
+
+            <div id="vector-graph"></div>
+
+            <canvas id="edge-graph" width="800" height="600" style="display: none;"></canvas>
+
+            <canvas id="rings" width="800" height="600"></canvas>
+
+            <div id="band-info-dialog"></div>
+
+        </div>
+
+        <div id="search">
+
+            <div class="search-input-wrapper">
+                <input id="search-input" type="search" minlength="1" maxlength="255" placeholder="Search for band."
+                    /><input id="search-btn" type="button" value="Search"/>
+                <span id="search-results-count">&nbsp;</span>
+            </div>
+
+            <div id="search-results" style="display: none;">
+
+                <div id="search-results-header"></div>
+                <table id="search-results-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Genre</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div id="search-results-footer">&nbsp;</div>
+
+            </div>
+
+        </div>
+
+        <div id="about">
+
+            <p>
+                This app will display related artist data from the excellent
+                <a href="http://www.metal-archives.com" target="_blank">Encyclopaedia Metallum (metal-archives.com)</a> in a radial tree graph.
+            </p>
+
+            <p>
+                Search for a band (exact match, not case-sensitive) and expand the nodes to see related artists. Line thickness
+                indicates similarity to the parent band.
+            </p>
+
+            <p>
+                Source can be found on <a href="https://github.com/abelzile" target="_blank">github</a>.
+            </p>
+
+        </div>
+
+        <div id="loading-overlay">
+
+            <div class="ui-widget-overlay fill"></div>
+
+            <div class="fill">
+
+                <div id="loading-overlay-dialog" class="ui-corner-all ui-widget-content">
+
+                    <img id="loading-img" src="images/load.gif" />
+
+                    <div id="loading-msg"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script data-main="scripts/app/main" src="scripts/lib/requirejs/require.js"></script>
+</html>

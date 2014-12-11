@@ -1,0 +1,27 @@
+{
+    "error": "",
+    "iTotalRecords": 4,
+    "iTotalDisplayRecords": 4,
+    "sEcho": 1,
+    "aaData": [
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dismember/3540286646\">Dismember</a> (<strong>a.k.a.</strong> Dismember Corpse) <!-- 10.855365 -->" ,
+            "Death Metal" ,
+            "Mexico"    		]
+        ,
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dismember/122\">Dismember</a>  <!-- 10.855365 -->" ,
+            "Death Metal" ,
+            "Sweden"    		]
+        ,
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Dismember_Life_Body/3540260505\">Dismember Life Body</a>  <!-- 5.4276824 -->" ,
+            "Death Metal/Grindcore" ,
+            "Russia"    		]
+        ,
+        [
+            "<a href=\"http://www.metal-archives.com/bands/Select_and_Dismember/3540344223\">Select and Dismember</a>  <!-- 5.4276824 -->" ,
+            "Death Metal" ,
+            "Canada"    		]
+    ]
+}
