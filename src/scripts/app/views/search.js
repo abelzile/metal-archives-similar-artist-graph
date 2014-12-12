@@ -55,36 +55,11 @@ define(["jquery",
 
             events: {
 
-                'click #search-btn': 'search'
+                'click #search-btn': '_searchBtn',
+                'keypress #search-input': '_searchKb'
 
             },
 
-            search: function() {
-
-                var searchText = this.$searchInput.val();
-
-                if (searchText.length === 0) {
-                    return;
-                }
-
-                this.stopListening(null, "search-result:select");
-                this.trigger("search:searching");
-
-                this.collection.fetch({
-
-                    data: (new BandSearchQuery(searchText)).build(),
-
-                    success: function (collection, response, options) {
-                        //console.log("Success");
-                    },
-
-                    error: function (collection, response, options) {
-                        //console.log("Error");
-                    }
-
-                });
-
-            },
 
             render: function () {
 
@@ -115,6 +90,57 @@ define(["jquery",
                 this.$tBody.append(searchResultView.render().$el);
 
                 return this;
+
+            },
+
+            _searchBtn: function() {
+
+                var searchText = this.$searchInput.val();
+
+                if (this._isSearchValid(searchText)) {
+                    this._search(searchText);
+                }
+
+            },
+
+            _searchKb: function(e){
+
+                if (e.which !== 13) {
+                    return;
+                }
+
+                var searchText = this.$searchInput.val();
+
+                if (this._isSearchValid(searchText)) {
+                    this._search(searchText);
+                }
+
+            },
+
+            _search: function(txt) {
+
+                this.stopListening(null, "search-result:select");
+                this.trigger("search:searching");
+
+                this.collection.fetch({
+
+                    data: (new BandSearchQuery(txt)).build(),
+
+                    success: function (collection, response, options) {
+                        //console.log("Success");
+                    },
+
+                    error: function (collection, response, options) {
+                        //console.log("Error");
+                    }
+
+                });
+
+            },
+
+            _isSearchValid: function(txt) {
+
+                return !!txt;
 
             }
 

@@ -21,45 +21,33 @@ define(["require",
 
             parse: function(response, options) {
 
-                var models = [];
-
                 var queryResponse = response.query;
+                var count = queryResponse.count;
+                var rows = queryResponse.results.tr;
 
-                if (queryResponse.count === 0) {
-                    return models;
+                if (count === 0 || (count === 1 && rows.td.id === "no_artists")) {
+                    return [];
                 }
 
-                var responseRows = queryResponse.results.tr;
-
-                if (queryResponse.count === 1 && responseRows.td.id === "no_artists") {
-                    return models;
-                }
-
-                var max = Math.min(responseRows.length, this.MAX_RESULTS);
-
-                for (var i = 0; i < max; ++i) {
-
-                    var val = responseRows[i];
+                return _.initial(rows, rows.length - Math.min(rows.length, this.MAX_RESULTS)).map(function (val) {
 
                     var parser = new BandRelatedItemParser(val);
 
-                    if (!parser.isValid()) {
-                        continue;
+                    if (parser.isValid()) {
+
+                        return new Band({
+                            "id": parser.getId(),
+                            "name": parser.getFullName(),
+                            "genre": parser.getGenre(),
+                            "country": parser.getCountry(),
+                            "score": parser.getScore(),
+                            "parentBand": options.parentBand,
+                            "relatedBands": new (require("app/collections/band-related-list"))()
+                        });
+
                     }
 
-                    models.push(new Band({
-                        "id": parser.getId(),
-                        "name": parser.getFullName(),
-                        "genre": parser.getGenre(),
-                        "country": parser.getCountry(),
-                        "score": parser.getScore(),
-                        "parentBand": options.parentBand,
-                        "relatedBands": new (require("app/collections/band-related-list"))()
-                    }));
-
-                }
-
-                return models;
+                });
 
             },
 

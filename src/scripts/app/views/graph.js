@@ -283,9 +283,7 @@ define(["jquery",
 
             _renderVectors: function (tree) {
 
-                var vectorAnimations = [];
-
-                _.forEach(tree.toFlatArray(), function (node) {
+                _.map(tree.toFlatArray(), function (node) {
 
                     var vectorView = this._ensureVectorView(node.data);
                     vectorView.x = node.x;
@@ -294,12 +292,10 @@ define(["jquery",
                     this.$vectors.append(vectorView.render().$el);
 
                     if (vectorView.hasMoved) {
-                        vectorAnimations.push(vectorView.animate());
+                        return vectorView.animate();
                     }
 
                 }, this);
-
-                return vectorAnimations;
 
             },
 

@@ -1,5 +1,7 @@
-define(["app/utils/number-ext"],
-    function(NumberExt) {
+define(["underscore",
+        "app/utils/number-ext"],
+    function(_,
+             NumberExt) {
 
         "use strict";
 
@@ -47,19 +49,13 @@ define(["app/utils/number-ext"],
 
         Color.createGradient = function(startColor, endColor, steps) {
 
-            var gradient = [];
-
-            for (var i = 0; i <= steps; ++i) {
-
-                gradient.push(new Color(
+            return _.range(steps + 1).map(function(val, i) {
+                return new Color(
                     NumberExt.toInteger(Color._inter(startColor.r, endColor.r, i, steps)),
                     NumberExt.toInteger(Color._inter(startColor.g, endColor.g, i, steps)),
                     NumberExt.toInteger(Color._inter(startColor.b, endColor.b, i, steps))
-                ));
-
-            }
-
-            return gradient;
+                );
+            });
 
         };
 

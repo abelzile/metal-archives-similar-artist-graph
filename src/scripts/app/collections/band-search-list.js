@@ -17,19 +17,17 @@ define(["jquery",
 
         return BandList.extend({
 
-            parse: function (response) {
-
-                var models = [];
+            parse: function(response){
 
                 if (response.query.results.json.iTotalRecords === 0) {
-                    return models;
+                    return [];
                 }
 
-                _.forEach(response.query.results.json.aaData, function (val) {
+                return _.map(response.query.results.json.aaData, function(val){
 
                     var parser = new BandSearchItemParser(val);
 
-                    models.push(new Band({
+                    return new Band({
                         "id": parser.getId(),
                         "name": parser.getFullName(),
                         "genre": parser.getGenre(),
@@ -37,15 +35,14 @@ define(["jquery",
                         "score": 0,
                         "parentBand": null,
                         "relatedBands": new BandRelatedList()
-                    }));
+                    });
 
-                }, this);
-
-                return models;
+                });
 
             }
 
         });
 
     }
+
 );
