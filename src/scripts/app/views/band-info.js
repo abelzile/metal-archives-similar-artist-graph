@@ -42,10 +42,8 @@ define(["jquery",
 
                 var mdl = this.model.toJSON();
 
-                var cou = CountryCodes[mdl.country];
-
                 _.extend(mdl, {
-                    countryCode: CountryCodes[mdl.country]
+                    countryCode: CountryCodes[mdl.country] || "xx"
                 });
 
                 this.$el.html(this.template(mdl));

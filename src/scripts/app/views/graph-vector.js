@@ -30,47 +30,9 @@ define(["jquery",
 
             events: {
 
-                "click .graph-vector-expand-related-wrapper > .toggle-link": function() {
+                "click .graph-vector-expand-related-wrapper > .toggle-link": "_showHideRelated",
 
-                    this.trigger("graph-vector:hide-band-info");
-
-                    if (!this._childrenLoaded) {
-
-                        this.model.get("relatedBands").fetch({
-
-                            data: (new BandRelatedQuery(this.model.get("id"))).build(),
-
-                            parentBand: this.model,
-
-                            success: _.bind(function (collection, response, options) {
-
-                                this._childrenLoaded = true;
-
-                                //console.log("Success loading related bands");
-
-                            }, this),
-
-                            error: function (collection, response, options) {
-                                //console.log("Error");
-                            }
-
-                        });
-
-                    } else {
-
-                        this._childrenLoaded = false;
-
-                        this.model.clearRelatedBands({ isSourceOfReset: true });
-
-                    }
-
-                },
-
-                "click .graph-vector-expand-details-wrapper > .toggle-link" : function() {
-
-                    this.trigger("graph-vector:show-band-info", this.model, this.$el);
-
-                }
+                "click .graph-vector-expand-details-wrapper > .toggle-link": "_showBandInfo"
 
             },
 
@@ -164,6 +126,49 @@ define(["jquery",
                     });
 
                 return dfd.promise();
+
+            },
+
+
+            _showHideRelated: function() {
+
+                this.trigger("graph-vector:hide-band-info");
+
+                if (!this._childrenLoaded) {
+
+                    this.model.get("relatedBands").fetch({
+
+                        data: (new BandRelatedQuery(this.model.get("id"))).build(),
+
+                        parentBand: this.model,
+
+                        success: _.bind(function (collection, response, options) {
+
+                            this._childrenLoaded = true;
+
+                            //console.log("Success loading related bands");
+
+                        }, this),
+
+                        error: function (collection, response, options) {
+                            //console.log("Error");
+                        }
+
+                    });
+
+                } else {
+
+                    this._childrenLoaded = false;
+
+                    this.model.clearRelatedBands({ isSourceOfReset: true });
+
+                }
+
+            },
+
+            _showBandInfo: function() {
+
+                this.trigger("graph-vector:show-band-info", this.model, this.$el);
 
             }
 

@@ -23,8 +23,6 @@ define(["jquery",
 
             initialize: function() {
 
-                _.bindAll(this, "renderOne");
-
                 this.$searchInput = this.$el.find("#search-input");
                 this.$searchResults = this.$el.find("#search-results");
                 this.$tBody = this.$searchResults.find("#search-results-table").children('tbody');
@@ -66,7 +64,7 @@ define(["jquery",
                 this.$tBody.empty();
                 this.$count.text(this.collection.length + " band(s) found.");
 
-                this.collection.each(this.renderOne);
+                this.collection.each(this._renderOne, this);
 
                 this.$searchResults.show();
 
@@ -76,7 +74,7 @@ define(["jquery",
 
             },
 
-            renderOne: function (model) {
+            _renderOne: function (model) {
 
                 var searchResultView = new SearchResultView({ 'model': model });
 

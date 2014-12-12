@@ -9,7 +9,7 @@ define(["jquery",
 
     return Backbone.View.extend({
 
-        LINE_COLOR: "#000",
+        LINE_COLOR: "#555",
 
         DEFAULT_LINE_WIDTH: 1,
 
@@ -38,17 +38,16 @@ define(["jquery",
 
             }
 
+            this._drawLine(lineWidth, this.startX, this.startY, this.endX, this.endY);
+
+        },
+
+        _drawLine: function(lineWidth, startX, startY, endX, endY) {
+
             var context = this.drawingContext;
             context.fillStyle = this.LINE_COLOR;
             context.strokeStyle = this.LINE_COLOR;
             context.lineWidth = lineWidth;
-
-            this._drawLine(context, this.startX, this.startY, this.endX, this.endY);
-
-        },
-
-        _drawLine: function(context, startX, startY, endX, endY) {
-
             context.beginPath();
             context.moveTo(startX, startY);
             context.lineTo(endX, endY);

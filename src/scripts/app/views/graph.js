@@ -77,8 +77,6 @@ define(["jquery",
 
             start: function(model) {
 
-                //console.log("Start");
-
                 this._cleanUpCurrentModel();
 
                 this.stopListening(model.get("relatedBands"));
@@ -88,8 +86,6 @@ define(["jquery",
             },
 
             render: function() {
-
-                //console.log("Render");
 
                 this.trigger("graph:rendering", this);
 
@@ -123,8 +119,6 @@ define(["jquery",
             },
 
             _render: function() {
-
-                //console.log("Render Graph.");
 
                 this._clearCanvases();
 
@@ -283,7 +277,7 @@ define(["jquery",
 
             _renderVectors: function (tree) {
 
-                _.map(tree.toFlatArray(), function (node) {
+                _.forEach(tree.toFlatArray(), function (node) {
 
                     var vectorView = this._ensureVectorView(node.data);
                     vectorView.x = node.x;
