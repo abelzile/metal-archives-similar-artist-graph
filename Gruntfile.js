@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 
                     {expand: true, cwd: 'src/scripts/lib/backbone', src: ['**/backbone.js'], dest: 'dist/scripts/lib/backbone'},
                     {expand: true, cwd: 'src/scripts/lib/jquery/dist', src: ['**/jquery.min.js'], dest: 'dist/scripts/lib/jquery/dist'},
-                    {expand: true, cwd: 'src/scripts/lib/jquery-dialogextend', src: ['**/jquery.dialogextend.min.js'], dest: 'dist/scripts/lib/jquery-dialogextend'},
+                    {expand: true, cwd: 'src/scripts/lib/jquery-dialogextend', src: ['**/jquery.dialogextend.js'], dest: 'dist/scripts/lib/jquery-dialogextend'},
                     {expand: true, cwd: 'src/scripts/lib/jqueryui-custom', src: ['**/*.min.js', '**/*.min.css', 'images/**'], dest: 'dist/scripts/lib/jqueryui-custom'},
                     {expand: true, cwd: 'src/scripts/lib/lodash/dist', src: ['**/lodash.min.js'], dest: 'dist/scripts/lib/lodash/dist'},
                     {expand: true, cwd: 'src/scripts/lib/requirejs', src: ['**/*.js'], dest: 'dist/scripts/lib/requirejs'},

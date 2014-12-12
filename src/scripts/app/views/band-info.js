@@ -3,12 +3,14 @@ define(["jquery",
         "backbone",
         "text!templ/info-dialog.html",
         "app/models/band",
+        "app/utils/country-codes",
         "lib/jqueryui-custom/jquery-ui.min"],
     function ($,
               _,
               Backbone,
               Template,
-              Band) {
+              Band,
+              CountryCodes) {
 
         "use strict";
 
@@ -39,8 +41,11 @@ define(["jquery",
                 options = options || { position: { my: "center", at: "center", of: window } };
 
                 var mdl = this.model.toJSON();
+
+                var cou = CountryCodes[mdl.country];
+
                 _.extend(mdl, {
-                    flagUrl: "./images/flags/" + mdl.country.toLowerCase().replace(/\s/g, "-") + ".png"
+                    countryCode: CountryCodes[mdl.country]
                 });
 
                 this.$el.html(this.template(mdl));
