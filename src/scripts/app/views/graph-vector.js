@@ -32,7 +32,7 @@ define(["jquery",
 
                 "click .graph-vector-expand-related-wrapper > .toggle-link": "_showHideRelated",
 
-                "click .graph-vector-expand-details-wrapper > .toggle-link": "_showBandInfo"
+                "click .graph-vector-expand-details-wrapper > .info-link": "_showBandInfo"
 
             },
 
@@ -91,7 +91,8 @@ define(["jquery",
                 var data = this.model.toJSON();
 
                 _.extend(data, {
-                    toggleClass: (this._childrenLoaded) ? "fa-minus-circle" : "fa-plus-circle"
+                    toggleFontClass: (this._childrenLoaded) ? "fa-minus-circle" : "fa-plus-circle",
+                    toggleDecoClass: (this._childrenLoaded) ? "toggle-link-glow-on" : "toggle-link-glow-off"
                 });
 
                 this.$el.html(this.template(data));

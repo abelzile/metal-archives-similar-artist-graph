@@ -1,1 +1,1 @@
-define(function(){"use strict";function NumberExt(){}return NumberExt.toInteger=function(value){return 0===value||1/0===value||value===-1/0?value:~~value},NumberExt});
+define(function(){"use strict";function a(){}return a.toInteger=function(a){return 0===a||1/0===a||a===-1/0?a:~~a},a});

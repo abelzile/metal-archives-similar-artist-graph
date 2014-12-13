@@ -29,9 +29,28 @@ a.toggle-link:link,
 a.toggle-link:visited,
 a.toggle-link:hover,
 a.toggle-link:active {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+a.info-link:link,
+a.info-link:visited,
+a.info-link:hover,
+a.info-link:active {
     color: #eee;
     text-decoration: none;
     font-size: 16px;
+}
+
+.toggle-link-glow-on {
+    color: #555555;
+    -webkit-text-shadow: 0 0 6px #ffffff;
+    -moz-text-shadow: 0 0 6px #ffffff;
+    text-shadow: 0 0 6px #ffffff;
+}
+
+.toggle-link-glow-off {
+    color: #eee;
 }
 
 #the-app {
