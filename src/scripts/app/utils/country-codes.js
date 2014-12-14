@@ -1,5 +1,7 @@
 define(function() {
 
+    // This is not a comprehensive list of country codes but just the subset used on metal-archives.com at the time of this writing.
+
     "use strict";
 
     return {

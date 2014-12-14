@@ -198,7 +198,6 @@ define(["jquery",
             _renderRings: function(levels) {
 
                 var maxLevel = levels.length;
-
                 var maxColors = maxLevel;
 
                 for (var i = 0; i < levels.length; ++i) {
@@ -410,8 +409,6 @@ define(["jquery",
             },
 
             _addViewListeners: function(view) {
-
-                //console.log("Add view listeners.");
 
                 this.listenTo(
                     view.model.get("relatedBands"),

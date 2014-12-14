@@ -13,7 +13,6 @@ define(function(){
         if (typeof this._relatedResult.id === 'undefined') {
             return false; // a 'show more' or 'no results' link.
         }
-
         return true;
 
     };
