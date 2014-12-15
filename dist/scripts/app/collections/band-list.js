@@ -1,1 +1,1 @@
-define(["jquery","underscore","backbone","app/models/band"],function(a,b,c,d){"use strict";return c.Collection.extend({model:d,url:"https://query.yahooapis.com/v1/public/yql",fetch:function(a){return c.Collection.prototype.fetch.call(this,b.extend({reset:!0,dataType:"jsonp"},a))}})});
+define(["underscore","backbone","app/models/band"],function(a,b,c){"use strict";return b.Collection.extend({model:c,url:"https://query.yahooapis.com/v1/public/yql",fetch:function(c){return b.Collection.prototype.fetch.call(this,a.extend({reset:!0,dataType:"jsonp"},c))}})});

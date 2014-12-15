@@ -1,8 +1,6 @@
-define(["jquery",
-        "underscore",
+define(["underscore",
         "app/utils/math-ext"],
-    function ($,
-              _,
+    function (_,
               MathExt) {
 
         /* This is an implementation of org.jgraph.layout.RadialTreeLayoutAlgorithm. */
@@ -55,115 +53,119 @@ define(["jquery",
             
         });
 
-        RadialTreeGraph.prototype.run = function(tree, width, height) {
+        _.extend(RadialTreeGraph.prototype, {
 
-            var depth = tree.depth;
+            run: function(tree, width, height) {
 
-            var w = this.width;
-            if ((this.width === this.rootX) && (this.rootX === this.radiusX) && (this.rootX === 0)) {
-                w = width;
-            }
+                var depth = tree.depth;
 
-            if (w !== 0) {
-                this.rootX = w / 2.0;
-                this.radiusX = this.rootX / depth;
-            }
+                var w = this.width;
+                if ((this.width === this.rootX) && (this.rootX === this.radiusX) && (this.rootX === 0)) {
+                    w = width;
+                }
 
-            var h = this.height;
-            if ((this.height === this.rootY) && (this.rootY === this.radiusY) && (this.rootY === 0)) {
-                h = height;
-            }
+                if (w !== 0) {
+                    this.rootX = w / 2.0;
+                    this.radiusX = this.rootX / depth;
+                }
 
-            if (h !== 0) {
-                this.rootY = h / 2.0;
-                this.radiusY = this.rootY / depth;
-            }
+                var h = this.height;
+                if ((this.height === this.rootY) && (this.rootY === this.radiusY) && (this.rootY === 0)) {
+                    h = height;
+                }
 
-            this.layoutTree(tree);
+                if (h !== 0) {
+                    this.rootY = h / 2.0;
+                    this.radiusY = this.rootY / depth;
+                }
 
-        };
+                this.layoutTree(tree);
 
-        RadialTreeGraph.prototype.layoutTree = function(node) {
+            },
 
-            node.angle = 0;
-            node.x = this.rootX;
-            node.y = this.rootY;
-            node.rightBisector = 0;
-            node.rightTangent = 0;
-            node.leftBisector = MathExt.TWO_PI;
-            node.leftTangent = MathExt.TWO_PI;
+            layoutTree: function(node) {
 
-            this.layoutTreeN(1, [node]);
+                node.angle = 0;
+                node.x = this.rootX;
+                node.y = this.rootY;
+                node.rightBisector = 0;
+                node.rightTangent = 0;
+                node.leftBisector = MathExt.TWO_PI;
+                node.leftTangent = MathExt.TWO_PI;
 
-        };
+                this.layoutTreeN(1, [node]);
 
-        RadialTreeGraph.prototype.layoutTreeN = function(level, nodes) {
+            },
 
-            var prevAngle = 0.0;
-            var firstParent = null;
-            var prevParent = null;
-            var parentNodes = [];
+            layoutTreeN: function(level, nodes) {
 
-            _.forEach(nodes, function(parent) {
+                var prevAngle = 0.0;
+                var firstParent = null;
+                var prevParent = null;
+                var parentNodes = [];
 
-                var children = parent.children;
-                var rightLimit = parent.rightLimit;
-                var angleSpace = (parent.leftLimit - rightLimit) / children.length;
+                _.forEach(nodes, function(parent) {
 
-                _.forEach(children, function(node, i) {
+                    var children = parent.children;
+                    var rightLimit = parent.rightLimit;
+                    var angleSpace = (parent.leftLimit - rightLimit) / children.length;
 
-                    node.angle = rightLimit + ((i + 0.5) * angleSpace);
-                    node.x = this.rootX + ((level * this.radiusX) * Math.cos(node.angle));
-                    node.y = this.rootY + ((level * this.radiusY) * Math.sin(node.angle));
+                    _.forEach(children, function(node, i) {
 
-                    if (node.hasChildren) {
+                        node.angle = rightLimit + ((i + 0.5) * angleSpace);
+                        node.x = this.rootX + ((level * this.radiusX) * Math.cos(node.angle));
+                        node.y = this.rootY + ((level * this.radiusY) * Math.sin(node.angle));
 
-                        parentNodes.push(node);
+                        if (node.hasChildren) {
 
-                        if (firstParent === null) {
-                            firstParent = node;
+                            parentNodes.push(node);
+
+                            if (firstParent === null) {
+                                firstParent = node;
+                            }
+
+                            var prevGap = node.angle - prevAngle;
+                            node.rightBisector = node.angle - (prevGap / 2.0);
+                            if (prevParent !== null) {
+                                prevParent.leftBisector = node.rightBisector;
+                            }
+
+                            var arcAngle = level / (level + 1.0);
+                            var arc = 2.0 * Math.asin(arcAngle);
+
+                            node.leftTangent = node.angle + arc;
+                            node.rightTangent = node.angle - arc;
+
+                            prevAngle = node.angle;
+                            prevParent = node;
+
                         }
 
-                        var prevGap = node.angle - prevAngle;
-                        node.rightBisector = node.angle - (prevGap / 2.0);
-                        if (prevParent !== null) {
-                            prevParent.leftBisector = node.rightBisector;
-                        }
-
-                        var arcAngle = level / (level + 1.0);
-                        var arc = 2.0 * Math.asin(arcAngle);
-
-                        node.leftTangent = node.angle + arc;
-                        node.rightTangent = node.angle - arc;
-
-                        prevAngle = node.angle;
-                        prevParent = node;
-
-                    }
+                    }, this);
 
                 }, this);
 
-            }, this);
+                if (firstParent !== null) {
 
-            if (firstParent !== null) {
+                    var remainingAngle = MathExt.TWO_PI - prevParent.angle;
 
-                var remainingAngle = MathExt.TWO_PI - prevParent.angle;
+                    firstParent.rightBisector = (firstParent.angle - remainingAngle) / 2.0;
 
-                firstParent.rightBisector = (firstParent.angle - remainingAngle) / 2.0;
+                    if (firstParent.rightBisector < 0) {
+                        prevParent.leftBisector = firstParent.rightBisector + MathExt.TWO_PI + MathExt.TWO_PI;
+                    } else {
+                        prevParent.leftBisector = firstParent.rightBisector + MathExt.TWO_PI;
+                    }
 
-                if (firstParent.rightBisector < 0) {
-                    prevParent.leftBisector = firstParent.rightBisector + MathExt.TWO_PI + MathExt.TWO_PI;
-                } else {
-                    prevParent.leftBisector = firstParent.rightBisector + MathExt.TWO_PI;
+                }
+
+                if (parentNodes.length > 0) {
+                    this.layoutTreeN(level + 1, parentNodes);
                 }
 
             }
 
-            if (parentNodes.length > 0) {
-                this.layoutTreeN(level + 1, parentNodes);
-            }
-
-        };
+        });
 
         return RadialTreeGraph;
 

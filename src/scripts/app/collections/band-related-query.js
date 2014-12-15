@@ -1,4 +1,4 @@
-define(function(){
+define(["underscore"], function(_){
 
     "use strict";
 
@@ -10,14 +10,18 @@ define(function(){
 
     BandRelatedQuery.QUERY_STRING = "select * from html where url = 'http://www.metal-archives.com/band/ajax-recommendations/id/{bandId}' and xpath = '//tbody/tr'";
 
-    BandRelatedQuery.prototype.build = function() {
+    _.extend(BandRelatedQuery.prototype, {
 
-        return {
-            q: BandRelatedQuery.QUERY_STRING.replace(/{bandId}/gi, this._bandId),
-            format: 'json'
-        };
+        build: function() {
 
-    };
+            return {
+                q: BandRelatedQuery.QUERY_STRING.replace(/{bandId}/gi, this._bandId),
+                format: 'json'
+            };
+
+        }
+
+    });
 
     return BandRelatedQuery;
 

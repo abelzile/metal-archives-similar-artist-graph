@@ -1,9 +1,7 @@
-define(["jquery",
-        "underscore",
+define(["underscore",
         "backbone",
         "app/models/band"],
-    function ($,
-              _,
+    function (_,
               Backbone,
               Band) {
 

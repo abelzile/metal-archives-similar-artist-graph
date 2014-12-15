@@ -1,22 +1,22 @@
-define(["jquery",
-        "underscore"],
-    function($, _){
+define(["underscore"], function(_){
 
-        "use strict";
+    "use strict";
 
-        function BandSearchItemParser(searchResult){
+    function BandSearchItemParser(searchResult){
 
-            if (_.isArray(searchResult)) {
-                this._searchResult = searchResult; // Single band returned by search.
-            } else {
-                this._searchResult = searchResult.json; // Multiple bands returned by search.
-            }
-
+        if (_.isArray(searchResult)) {
+            this._searchResult = searchResult; // Single band returned by search.
+        } else {
+            this._searchResult = searchResult.json; // Multiple bands returned by search.
         }
 
-        BandSearchItemParser.AKA_TOKEN = "<strong>a.k.a.</strong>";
+    }
 
-        BandSearchItemParser.prototype.getId = function() {
+    BandSearchItemParser.AKA_TOKEN = "<strong>a.k.a.</strong>";
+
+    _.extend(BandSearchItemParser.prototype, {
+
+        getId: function() {
 
             var str = this._searchResult[0];
             var end = str.indexOf("</a>") + 4;
@@ -26,9 +26,9 @@ define(["jquery",
 
             return urlParts[urlParts.length - 1];
 
-        };
+        },
 
-        BandSearchItemParser.prototype.getName = function() {
+        getName: function() {
 
             var str = this._searchResult[0];
             var end = str.indexOf("</a>") + 4;
@@ -36,9 +36,9 @@ define(["jquery",
 
             return a.substring(a.indexOf(">") + 1, a.indexOf("</a>"));
 
-        };
+        },
 
-        BandSearchItemParser.prototype.getAka = function() {
+        getAka: function() {
 
             var str = this._searchResult[0];
             var akaIndex = str.indexOf(BandSearchItemParser.AKA_TOKEN);
@@ -49,9 +49,9 @@ define(["jquery",
 
             return "";
 
-        };
+        },
 
-        BandSearchItemParser.prototype.getFullName = function() {
+        getFullName: function() {
 
             var name = this.getName();
             var aka = this.getAka();
@@ -62,21 +62,22 @@ define(["jquery",
 
             return name;
 
-        };
+        },
 
-        BandSearchItemParser.prototype.getGenre = function() {
+        getGenre: function() {
 
             return this._searchResult[1];
 
-        };
+        },
 
-        BandSearchItemParser.prototype.getCountry = function() {
+        getCountry: function() {
 
             return this._searchResult[2];
 
-        };
+        }
 
-        return BandSearchItemParser;
+    });
 
-    }
-);
+    return BandSearchItemParser;
+
+});
