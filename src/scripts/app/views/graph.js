@@ -433,6 +433,13 @@ define(["jquery",
 
                     }, this));
 
+                this.listenTo(
+                    view,
+                    "graph-vector:showing-related",
+                    _.bind(function() {
+                        this.trigger("graph:showing-related");
+                    }, this));
+
                 return view;
 
             },

@@ -79,6 +79,12 @@ define(["jquery",
                         "graph:rendered",
                         function () {
                             this._hideLoadingMsg();
+                        })
+                    .listenTo(
+                        this.graphView,
+                        "graph:showing-related",
+                        function () {
+                            this._showLoadingMsg("Querying...");
                         });
 
                 this.resizeLayout();
@@ -99,7 +105,9 @@ define(["jquery",
             _showLoadingMsg: function(msg) {
 
                 this.$loadingMsg.text(msg);
-                this.$loadingOverlay.fadeIn("fast");
+                if (this.$loadingOverlay.is(":hidden")) {
+                    this.$loadingOverlay.fadeIn("fast");
+                }
 
             },
 

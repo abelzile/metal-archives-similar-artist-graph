@@ -130,12 +130,11 @@ define(["jquery",
 
             },
 
-
             _showHideRelated: function() {
 
-                this.trigger("graph-vector:hide-band-info");
-
                 if (!this._childrenLoaded) {
+
+                    this.trigger("graph-vector:showing-related");
 
                     this.model.get("relatedBands").fetch({
 
@@ -146,6 +145,8 @@ define(["jquery",
                         success: _.bind(function (collection, response, options) {
 
                             this._childrenLoaded = true;
+
+                            this.trigger("graph-vector:showed-related");
 
                             //console.log("Success loading related bands");
 
