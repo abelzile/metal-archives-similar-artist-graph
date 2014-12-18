@@ -32,7 +32,11 @@ define(["jquery",
 
                 "click .graph-vector-expand-related-wrapper > .toggle-link": "_showHideRelated",
 
-                "click .graph-vector-expand-details-wrapper > .info-link": "_showBandInfo"
+                "click .graph-vector-expand-details-wrapper > .info-link": "_showBandInfo",
+
+                "click": function() {
+                    this.trigger("graph-vector:focus", this);
+                }
 
             },
 
@@ -75,13 +79,14 @@ define(["jquery",
                         }
                     });
 
-                _.extend(this, _.pick(options, "x", "y", "prevX", "prevY"));
+                _.extend(this, _.pick(options, "x", "y", "prevX", "prevY", "z"));
 
                 this.$el
                     .addClass("graph-vector")
                     .css({
                          left: (this.x + this.POSITION_OFFSET) + "px",
-                         top: (this.y + this.POSITION_OFFSET) + "px"
+                         top: (this.y + this.POSITION_OFFSET) + "px",
+                         zIndex: this.z
                     });
 
             },
@@ -127,6 +132,12 @@ define(["jquery",
                     });
 
                 return dfd.promise();
+
+            },
+
+            setZIndex: function(z) {
+
+                this.$el.css({ zIndex: z });
 
             },
 

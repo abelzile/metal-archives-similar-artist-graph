@@ -47,6 +47,8 @@ define(["jquery",
 
             bandInfoView: null,
 
+            z: 100,
+
             initialize: function(options) {
 
                 this.$vectors = this.$el.find("#vector-graph");
@@ -80,6 +82,8 @@ define(["jquery",
                 this._cleanUpCurrentModel();
 
                 this.stopListening(model.get("relatedBands"));
+
+                this.z = 100;
 
                 this.model.set(model.toJSON());
 
@@ -375,12 +379,13 @@ define(["jquery",
                     x: x,
                     y: y,
                     prevX: x,
-                    prevY: y
+                    prevY: y,
+                    z: ++this.z
                 });
 
                 this.vectorViews[band.cid] = view;
 
-                return this._addViewListeners(view);
+                return this._addVectorViewListeners(view);
 
             },
 
@@ -408,7 +413,7 @@ define(["jquery",
 
             },
 
-            _addViewListeners: function(view) {
+            _addVectorViewListeners: function(view) {
 
                 this.listenTo(
                     view.model.get("relatedBands"),
@@ -438,6 +443,13 @@ define(["jquery",
                     "graph-vector:showing-related",
                     _.bind(function() {
                         this.trigger("graph:showing-related");
+                    }, this));
+
+                this.listenTo(
+                    view,
+                    "graph-vector:focus",
+                    _.bind(function(vw) {
+                        vw.setZIndex(++this.z);
                     }, this));
 
                 return view;
