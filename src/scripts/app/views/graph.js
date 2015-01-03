@@ -416,41 +416,38 @@ define(["jquery",
             _addVectorViewListeners: function(view) {
 
                 this.listenTo(
-                    view.model.get("relatedBands"),
-                    "reset",
-                    _.bind(function (collection, options) {
+                        view.model.get("relatedBands"),
+                        "reset",
+                        _.bind(function (collection, options) {
 
-                        this._updateViews(collection.models, options.previousModels);
+                            this._updateViews(collection.models, options.previousModels);
 
-                        if (options.isSourceOfReset) {
-                            this.render();
-                        }
+                            if (options.isSourceOfReset) {
+                                this.render();
+                            }
 
-                    }, this));
+                        }, this))
+                    .listenTo(
+                        view,
+                        "graph-vector:show-band-info",
+                        _.bind(function (model, $opener) {
 
-                this.listenTo(
-                    view,
-                    "graph-vector:show-band-info",
-                    _.bind(function (model, $opener) {
+                            this.bandInfoView.model.set(model.toJSON());
+                            this.bandInfoView.render({ position: { my: "center top-25", at: "center bottom", of: $opener } });
 
-                        this.bandInfoView.model.set(model.toJSON());
-                        this.bandInfoView.render({ position: { my: "center top-25", at: "center bottom", of: $opener } });
-
-                    }, this));
-
-                this.listenTo(
-                    view,
-                    "graph-vector:showing-related",
-                    _.bind(function() {
-                        this.trigger("graph:showing-related");
-                    }, this));
-
-                this.listenTo(
-                    view,
-                    "graph-vector:focus",
-                    _.bind(function(vw) {
-                        vw.setZIndex(++this.z);
-                    }, this));
+                        }, this))
+                    .listenTo(
+                        view,
+                        "graph-vector:showing-related",
+                        _.bind(function() {
+                            this.trigger("graph:showing-related");
+                        }, this))
+                    .listenTo(
+                        view,
+                        "graph-vector:focus",
+                        _.bind(function(vw) {
+                            vw.setZIndex(++this.z);
+                        }, this));
 
                 return view;
 

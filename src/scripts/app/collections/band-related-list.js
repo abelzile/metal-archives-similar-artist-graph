@@ -27,25 +27,27 @@ define(["require",
                     return [];
                 }
 
-                return _.initial(rows, rows.length - Math.min(rows.length, this.MAX_RESULTS)).map(function (val) {
+                if (count === 1) {
 
-                    var parser = new BandRelatedItemParser(val);
+                    var parser = new BandRelatedItemParser(rows);
 
                     if (parser.isValid()) {
-
-                        return new Band({
-                            "id": parser.getId(),
-                            "name": parser.getFullName(),
-                            "genre": parser.getGenre(),
-                            "country": parser.getCountry(),
-                            "score": parser.getScore(),
-                            "parentBand": options.parentBand,
-                            "relatedBands": new (require("app/collections/band-related-list"))()
-                        });
-
+                        return this._buildBand(parser, options);
                     }
 
-                });
+                } else {
+
+                    return _.initial(rows, rows.length - Math.min(rows.length, this.MAX_RESULTS)).map(function (val) {
+
+                        var parser = new BandRelatedItemParser(val);
+
+                        if (parser.isValid()) {
+                            return this._buildBand(parser, options);
+                        }
+
+                    }, this);
+
+                }
 
             },
 
@@ -58,6 +60,20 @@ define(["require",
                 }
 
                 return Backbone.Collection.prototype.reset.call(this, models, options);
+
+            },
+
+            _buildBand: function(parser, options) {
+
+                return new Band({
+                    "id": parser.getId(),
+                    "name": parser.getFullName(),
+                    "genre": parser.getGenre(),
+                    "country": parser.getCountry(),
+                    "score": parser.getScore(),
+                    "parentBand": options.parentBand,
+                    "relatedBands": new (require("app/collections/band-related-list"))()
+                });
 
             }
 
