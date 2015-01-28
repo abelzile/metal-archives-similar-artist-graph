@@ -37,7 +37,12 @@ define(["require",
 
                 } else {
 
-                    return _.initial(rows, rows.length - Math.min(rows.length, this.MAX_RESULTS)).map(function (val) {
+                    var drop = 0;
+                    if (rows.length > this.MAX_RESULTS) {
+                        drop = rows.length - this.MAX_RESULTS;
+                    }
+
+                    return _.dropRight(rows, drop).map(function (val) {
 
                         var parser = new BandRelatedItemParser(val);
 

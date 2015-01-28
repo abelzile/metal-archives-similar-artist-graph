@@ -3,7 +3,7 @@ requirejs.config({
     baseUrl: 'scripts/lib',
     paths: {
         jquery: './jquery/dist/jquery.min',
-        lodash: './lodash/dist/lodash.min',
+        lodash: './lodash/lodash.min',
         backbone: './backbone/backbone',
         text: './requirejs-text/text',
         app: '../app',

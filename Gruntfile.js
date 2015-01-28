@@ -45,7 +45,7 @@ module.exports = function(grunt) {
                     {expand: true, cwd: 'src/scripts/lib/jquery/dist', src: ['**/jquery.min.js'], dest: 'dist/scripts/lib/jquery/dist'},
                     {expand: true, cwd: 'src/scripts/lib/jquery-dialogextend', src: ['**/jquery.dialogextend.js'], dest: 'dist/scripts/lib/jquery-dialogextend'},
                     {expand: true, cwd: 'src/scripts/lib/jqueryui-custom', src: ['**/*.min.js', '**/*.min.css', 'images/**'], dest: 'dist/scripts/lib/jqueryui-custom'},
-                    {expand: true, cwd: 'src/scripts/lib/lodash/dist', src: ['**/lodash.min.js'], dest: 'dist/scripts/lib/lodash/dist'},
+                    {expand: true, cwd: 'src/scripts/lib/lodash', src: ['**/lodash.min.js'], dest: 'dist/scripts/lib/lodash'},
                     {expand: true, cwd: 'src/scripts/lib/requirejs', src: ['**/*.js'], dest: 'dist/scripts/lib/requirejs'},
                     {expand: true, cwd: 'src/scripts/lib/requirejs-text', src: ['**/*.js'], dest: 'dist/scripts/lib/requirejs-text'},
                     {expand: true, cwd: 'src/images/', src: ['**'], dest: 'dist/images'},
