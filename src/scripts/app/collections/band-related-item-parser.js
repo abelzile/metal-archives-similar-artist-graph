@@ -33,13 +33,13 @@ define(["underscore"], function(_){
 
         getGenre: function() {
 
-            return this._relatedResult.td[2].p;
+            return this._relatedResult.td[2];
 
         },
 
         getCountry: function() {
 
-            return this._relatedResult.td[1].p;
+            return this._relatedResult.td[1];
 
         },
 
