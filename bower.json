@@ -18,7 +18,7 @@
     "backbone": null,
     "requirejs": null,
     "requirejs-text": "~2.0.12",
-    "lodash": "~3.0.0"
+    "lodash": "3.5.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5"
