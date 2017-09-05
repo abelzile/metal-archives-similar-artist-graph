@@ -1,1 +1,0 @@
-define(["underscore"],function(a){"use strict";function b(a){this._bandId=a}return b.QUERY_STRING="select * from html where url = 'http://www.metal-archives.com/band/ajax-recommendations/id/{bandId}' and xpath = '//tbody/tr'",a.extend(b.prototype,{build:function(){return{q:b.QUERY_STRING.replace(/{bandId}/gi,this._bandId),format:"json"}}}),b});

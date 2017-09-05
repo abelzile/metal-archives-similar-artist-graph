@@ -1,1 +1,0 @@
-define(function(){"use strict";function a(){}return a.toInteger=function(a){return 0===a||1/0===a||a===-1/0?a:~~a},a});

@@ -1,1 +1,0 @@
-define(["underscore","backbone","app/models/band"],function(a,b,c){"use strict";return b.Collection.extend({model:c,url:"https://query.yahooapis.com/v1/public/yql",fetch:function(c){return b.Collection.prototype.fetch.call(this,a.extend({reset:!0,dataType:"jsonp"},c))}})});

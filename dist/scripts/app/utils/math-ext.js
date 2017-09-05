@@ -1,1 +1,0 @@
-define(["app/utils/number-ext"],function(a){"use strict";function b(){}return Object.defineProperties(b,{TWO_PI:{value:2*Math.PI,writable:!1,enumerable:!1,configurable:!1}}),b.randomInt=function(b,c){return b=a.toInteger(b),c=a.toInteger(c),a.toInteger(Math.random()*(c-b))+b},b.clamp=function(a,b,c){return Math.min(Math.max(a,b),c)},b});

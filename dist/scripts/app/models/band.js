@@ -1,1 +1,0 @@
-define(["jquery","underscore","backbone"],function(a,b,c){"use strict";return c.Model.extend({clearRelatedBands:function(a){a=a||{isSourceOfReset:!0},b.has(a,"isSourceOfReset")||(a.isSourceOfReset=!0);var c=this.get("relatedBands");c&&(b.forEach(c.models,function(a){a.clearRelatedBands({isSourceOfReset:!1})}),c.reset([],a))}})});
