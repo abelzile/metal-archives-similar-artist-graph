@@ -1,40 +1,24 @@
-define(["app/utils/number-ext"],
+'use strict';
+import { NumberExt } from './number-ext';
 
-    function(NumberExt) {
+export function MathExt() {}
 
-        "use strict";
+Object.defineProperties(MathExt, {
+  TWO_PI: {
+    value: Math.PI * 2,
+    writable: false,
+    enumerable: false,
+    configurable: false
+  }
+});
 
-        function MathExt() {
-        }
+MathExt.randomInt = function(min, max) {
+  min = NumberExt.toInteger(min);
+  max = NumberExt.toInteger(max);
 
-        Object.defineProperties(MathExt, {
+  return NumberExt.toInteger(Math.random() * (max - min)) + min;
+};
 
-           TWO_PI: {
-               value: Math.PI * 2,
-               writable: false,
-               enumerable: false,
-               configurable: false
-           }
-
-        });
-
-        MathExt.randomInt = function(min, max) {
-
-            min = NumberExt.toInteger(min);
-            max = NumberExt.toInteger(max);
-
-            return NumberExt.toInteger(Math.random() * (max - min)) + min;
-
-        };
-
-        MathExt.clamp = function(value, min, max) {
-
-            return Math.min(Math.max(value, min), max);
-
-        };
-
-        return MathExt;
-
-    }
-
-);
+MathExt.clamp = function(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+};

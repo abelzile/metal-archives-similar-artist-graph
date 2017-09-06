@@ -1,56 +1,35 @@
-define(["underscore"], function(_){
+'use strict';
+import * as _ from 'lodash';
 
-    "use strict";
+export function BandRelatedItemParser(relatedResult) {
+  this._$relatedResultTr = relatedResult;
+}
 
-    function BandRelatedItemParser(relatedResult){
-
-        this._relatedResult = relatedResult;
-
+_.extend(BandRelatedItemParser.prototype, {
+  isValid: function() {
+    if (typeof this._$relatedResultTr.id === 'undefined') {
+      return false; // a 'show more' or 'no results' link.
     }
+    return true;
+  },
 
-    _.extend(BandRelatedItemParser.prototype, {
+  getId: function() {
+    return this._$relatedResultTr.id.substr(this._$relatedResultTr.id.indexOf('_') + 1);
+  },
 
-        isValid: function() {
+  getFullName: function() {
+    return this._$relatedResultTr.td[0].a.content;
+  },
 
-            if (typeof this._relatedResult.id === 'undefined') {
-                return false; // a 'show more' or 'no results' link.
-            }
-            return true;
+  getGenre: function() {
+    return this._$relatedResultTr.td[2];
+  },
 
-        },
+  getCountry: function() {
+    return this._$relatedResultTr.td[1];
+  },
 
-        getId: function() {
-
-            return this._relatedResult.id.substr(this._relatedResult.id.indexOf('_') + 1);
-
-        },
-
-        getFullName: function() {
-
-            return this._relatedResult.td[0].a.content;
-
-        },
-
-        getGenre: function() {
-
-            return this._relatedResult.td[2];
-
-        },
-
-        getCountry: function() {
-
-            return this._relatedResult.td[1];
-
-        },
-
-        getScore: function() {
-
-            return parseInt(this._relatedResult.td[3].span.content, 10);
-
-        }
-
-    });
-
-    return BandRelatedItemParser;
-
+  getScore: function() {
+    return parseInt(this._$relatedResultTr.td[3].span.content, 10);
+  }
 });

@@ -1,32 +1,24 @@
-define(["underscore",
-        "backbone",
-        "app/models/band"],
-    function (_,
-              Backbone,
-              Band) {
+'use strict';
+import * as _ from 'lodash';
+import Backbone from 'backbone';
+import { Band } from '../models/band';
 
-        "use strict";
+export const BandList = Backbone.Collection.extend({
+  model: Band,
 
-        return Backbone.Collection.extend({
+  url: 'https://query.yahooapis.com/v1/public/yql',
 
-            model: Band,
+  fetch: function(options) {
+    return Backbone.Collection.prototype.fetch.call(
+      this,
+      _.extend(
+        {
+          reset: true,
 
-            url: 'https://query.yahooapis.com/v1/public/yql',
-
-            fetch: function(options) {
-
-                return Backbone.Collection.prototype.fetch.call(this, _.extend({
-
-                    reset: true,
-
-                    dataType: 'jsonp'
-
-                }, options));
-
-            }
-
-        });
-
-    }
-
-);
+          dataType: 'jsonp'
+        },
+        options
+      )
+    );
+  }
+});

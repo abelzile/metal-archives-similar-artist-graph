@@ -1,42 +1,13 @@
-requirejs.config({
-    enforceDefine: true,
-    baseUrl: 'scripts/lib',
-    paths: {
-        jquery: './jquery/dist/jquery.min',
-        lodash: './lodash/lodash.min',
-        backbone: './backbone/backbone',
-        text: './requirejs-text/text',
-        app: '../app',
-        lib: '../lib',
-        templ: '../../templates'
-    },
-    map: {
-        '*': {
-            underscore: 'lodash'
-        }
-    },
-    shim: {
-        "lib/jquery-dialogextend/jquery.dialogextend": {
-            deps: ["lib/jqueryui-custom/jquery-ui.min"],
-            exports: "jQuery.ui.dialogExtend"
-        }
-    }
-});
+'use strict';
+import '../../styles/styles.css';
+import '../../styles/flags.css';
+import '!!file-loader?name=[name].[ext]!../../images/blank.gif';
+import 'jquery-ui/themes/base/core.css';
+import 'jquery-ui/themes/base/base.css';
+import 'jquery-ui/themes/base/menu.css';
+import 'jquery-ui/themes/base/theme.css';
+import 'jquery-ui/themes/base/dialog.css';
+import 'jquery-ui/ui/widgets/dialog';
+import { AppView } from './views/app';
 
-define(["jquery",
-        "underscore",
-        "backbone",
-        "app/collections/band-search-list",
-        "app/views/app"],
-    function ($,
-              _,
-              Backbone,
-              BandSearchList,
-              AppView) {
-
-        "use strict";
-
-        new AppView();
-
-    }
-);
+new AppView();

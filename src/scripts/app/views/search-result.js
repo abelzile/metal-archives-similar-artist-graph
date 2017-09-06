@@ -1,39 +1,22 @@
-define(["jquery",
-        "underscore",
-        "backbone",
-        "text!templ/search-result.html"],
-    function ($,
-              _,
-              Backbone,
-              Template) {
+'use strict';
+import * as _ from 'lodash';
+import Backbone from 'backbone';
+import Template from '../../../templates/search-result.txt';
 
-        "use strict";
+export const SearchResultView = Backbone.View.extend({
+  tagName: 'tr',
 
-        return Backbone.View.extend({
+  template: _.template(Template),
 
-            tagName: 'tr',
-
-            template: _.template(Template),
-
-            events: {
-
-                "click .search-link": function() {
-
-                    this.trigger('search-result:select', this.model);
-
-                }
-
-            },
-
-            render: function() {
-
-                this.$el.html(this.template(this.model.toJSON()));
-
-                return this;
-
-            }
-
-        });
-
+  events: {
+    'click .search-link': function() {
+      this.trigger('search-result:select', this.model);
     }
-);
+  },
+
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
+});

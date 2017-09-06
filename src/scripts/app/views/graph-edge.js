@@ -1,60 +1,42 @@
-define(["jquery",
-        "underscore",
-        "backbone"],
-    function ($,
-              _,
-              Backbone) {
+import Backbone from 'backbone';
+import * as _ from 'lodash';
 
-    "use strict";
+export const GraphEdge = Backbone.View.extend({
+  LINE_COLOR: '#555',
 
-    return Backbone.View.extend({
+  DEFAULT_LINE_WIDTH: 1,
 
-        LINE_COLOR: "#555",
+  MAX_LINE_WIDTH: 8,
 
-        DEFAULT_LINE_WIDTH: 1,
+  initialize: function(options) {
+    _.extend(this, _.pick(options, 'startX', 'startY', 'endX', 'endY', 'canvas', 'drawingContext'));
+  },
 
-        MAX_LINE_WIDTH: 8,
+  render: function(options) {
+    let lineWidth = this.DEFAULT_LINE_WIDTH;
+    const score = this.model.get('score');
 
-        initialize: function(options) {
+    if (options.highScore > 0) {
+      const ratio = score / options.highScore;
 
-            _.extend(this, _.pick(options, "startX", "startY", "endX", "endY", "canvas", "drawingContext"));
+      lineWidth = ratio * this.MAX_LINE_WIDTH;
 
-        },
+      if (lineWidth < this.DEFAULT_LINE_WIDTH) {
+        lineWidth = this.DEFAULT_LINE_WIDTH;
+      }
+    }
 
-        render: function(options) {
+    this._drawLine(lineWidth, this.startX, this.startY, this.endX, this.endY);
+  },
 
-            var lineWidth = this.DEFAULT_LINE_WIDTH;
-            var score = this.model.get("score");
-
-            if (options.highScore > 0) {
-
-                var ratio = score / options.highScore;
-
-                lineWidth = ratio * this.MAX_LINE_WIDTH;
-
-                if (lineWidth < this.DEFAULT_LINE_WIDTH) {
-                    lineWidth = this.DEFAULT_LINE_WIDTH;
-                }
-
-            }
-
-            this._drawLine(lineWidth, this.startX, this.startY, this.endX, this.endY);
-
-        },
-
-        _drawLine: function(lineWidth, startX, startY, endX, endY) {
-
-            var context = this.drawingContext;
-            context.fillStyle = this.LINE_COLOR;
-            context.strokeStyle = this.LINE_COLOR;
-            context.lineWidth = lineWidth;
-            context.beginPath();
-            context.moveTo(startX, startY);
-            context.lineTo(endX, endY);
-            context.stroke();
-
-        }
-
-    });
-
+  _drawLine: function(lineWidth, startX, startY, endX, endY) {
+    const context = this.drawingContext;
+    context.fillStyle = this.LINE_COLOR;
+    context.strokeStyle = this.LINE_COLOR;
+    context.lineWidth = lineWidth;
+    context.beginPath();
+    context.moveTo(startX, startY);
+    context.lineTo(endX, endY);
+    context.stroke();
+  }
 });

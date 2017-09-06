@@ -1,63 +1,42 @@
-define(["jquery",
-        "underscore",
-        "backbone",
-        "text!templ/info-dialog.html",
-        "app/models/band",
-        "app/utils/country-codes",
-        "lib/jqueryui-custom/jquery-ui.min"],
-    function ($,
-              _,
-              Backbone,
-              Template,
-              Band,
-              CountryCodes) {
+'use strict';
+import * as _ from 'lodash';
+import Backbone from 'backbone';
+import Template from '../../../templates/info-dialog.txt';
+import { Band } from '../models/band';
+import { CountryCodes } from '../utils/country-codes';
 
-        "use strict";
+export const BandInfoView = Backbone.View.extend({
+  visible: false,
 
-        return Backbone.View.extend({
+  model: Band,
 
-            visible: false,
+  template: _.template(Template),
 
-            model: Band,
+  dlg: null,
 
-            template: _.template(Template),
+  initialize: function() {
+    this.dlg = $('#band-info-dialog').dialog({
+      autoOpen: false,
+      modal: true,
+      resizable: false,
+      show: 100,
+      hide: 100
+    });
+  },
 
-            dlg: null,
+  render: function(options) {
+    options = options || { position: { my: 'center', at: 'center', of: window } };
 
-            initialize: function() {
+    const mdl = this.model.toJSON();
 
-                this.dlg = $("#band-info-dialog").dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    show: 100,
-                    hide: 100
-                });
+    _.extend(mdl, {
+      countryCode: CountryCodes[mdl.country] || 'xx'
+    });
 
-            },
+    this.$el.html(this.template(mdl));
 
-            render: function(options) {
+    this.dlg.dialog('option', { title: this.model.get('name'), position: options.position }).dialog('open');
 
-                options = options || { position: { my: "center", at: "center", of: window } };
-
-                var mdl = this.model.toJSON();
-
-                _.extend(mdl, {
-                    countryCode: CountryCodes[mdl.country] || "xx"
-                });
-
-                this.$el.html(this.template(mdl));
-
-                this.dlg
-                    .dialog("option", { title: this.model.get("name"), position: options.position })
-                    .dialog("open");
-
-                return this;
-
-            }
-
-        });
-
-    }
-
-);
+    return this;
+  }
+});

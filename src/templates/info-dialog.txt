@@ -1,6 +1,6 @@
 <p class="info-dialog-section">
     <label>Country:</label>
-    <span><img src="images/blank.gif" class="flag flag-<%= countryCode %>" alt="<%= country %>" /> <%= country %></span>
+    <span><img src="blank.gif" class="flag flag-<%= countryCode %>" /> <%= country %></span>
 </p>
 
 <p class="info-dialog-section">
