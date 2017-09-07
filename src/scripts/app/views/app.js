@@ -1,7 +1,6 @@
 'use strict';
 import * as $ from 'jquery';
 import Backbone from 'backbone';
-import { AboutView } from './about';
 import { Band } from '../models/band';
 import { BandSearchList } from '../collections/band-search-list';
 import { GraphView } from './graph';
@@ -20,16 +19,12 @@ export const AppView = Backbone.View.extend({
 
   graphView: null,
 
-  aboutView: null,
-
   initialize: function() {
     (this.$window = $(window)).on('resize', this.resizeLayout.bind(this));
     this.$loadingOverlay = this.$el.find('#loading-overlay');
     this.$loadingMsg = this.$loadingOverlay.find('#loading-msg');
 
     const bandSearchList = new BandSearchList();
-
-    this.aboutView = new AboutView();
 
     this.searchView = new SearchView({ collection: bandSearchList });
 

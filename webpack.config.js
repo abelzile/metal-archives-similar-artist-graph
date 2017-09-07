@@ -21,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css-loader', 'style-loader')
+        loader: ExtractTextPlugin.extract('css-loader?minimize', 'style-loader')
       },
       {
         test: /\.(gif|jpg|png)$/,
@@ -45,11 +45,11 @@ module.exports = {
       'window.jQuery': "jquery'",
       'window.$': 'jquery'
     }),
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin('styles.css')
   ],
   resolve: {
     alias: {
-      'underscore': 'lodash'
+      underscore: 'lodash'
     }
   }
 };

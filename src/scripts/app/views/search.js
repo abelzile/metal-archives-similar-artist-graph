@@ -27,14 +27,23 @@ export const SearchView = Backbone.View.extend({
         modal: false,
         position: { my: 'left top', at: 'left top', of: window },
         resizable: false,
-        title: 'Search',
+        title: 'Metal Archives Related Artist Search',
         width: 450,
-        dialogClass: 'no-close',
-      }) /*.dialogExtend({
-                    closable: false,
-                    collapsable: true
-                })*/
+        dialogClass: 'no-close'
+      })
       .show('fast');
+
+    this.$el
+      .parent()
+      .find('span.ui-dialog-title')
+      .css('display', 'block')
+      .html(`
+        <div>Metal Archives Related Artist Search</div>
+        <div style="font-weight:normal;">
+            All results retrieved from 
+            <a href="https://www.metal-archives.com" target="_blank">metal-archives.com</a>
+        </div>
+        <div style="clear:both;"></div>`);
 
     this.listenTo(this.collection, 'reset', this.render);
   },
@@ -48,7 +57,9 @@ export const SearchView = Backbone.View.extend({
     this.$tBody.empty();
     this.$count.text(this.collection.length + ' band(s) found.');
 
-    _.forEach(this.collection.models, m => { this._renderOne(m) });
+    _.forEach(this.collection.models, m => {
+      this._renderOne(m);
+    });
 
     this.$searchResults.show();
 
@@ -58,7 +69,7 @@ export const SearchView = Backbone.View.extend({
   },
 
   _renderOne: function(model) {
-    const searchResultView = new SearchResultView({model: model});
+    const searchResultView = new SearchResultView({ model: model });
 
     this.listenTo(searchResultView, 'search-result:select', function(band) {
       this.trigger('search:select', band);
