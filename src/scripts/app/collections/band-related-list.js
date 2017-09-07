@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import Backbone from 'backbone';
 import { Band } from '../models/band';
 import { BandList } from './band-list';
-import { BandRelatedItemParser2 } from './band-related-item-parser-2';
+import { BandRelatedItemParser } from './band-related-item-parser';
 
 export const BandRelatedList = BandList.extend({
   MAX_RESULTS: 10,
@@ -29,12 +29,12 @@ export const BandRelatedList = BandList.extend({
     const result = $obj
       .find('tr')
       .map((i, el) => {
-        if (i < this.MAX_RESULTS) {
+        if (i >= this.MAX_RESULTS) {
           return null;
         }
 
         const $relatedResult = $(el);
-        const parser = new BandRelatedItemParser2($relatedResult);
+        const parser = new BandRelatedItemParser($relatedResult);
 
         if (parser.isValid()) {
           return this._buildBand(parser, options);

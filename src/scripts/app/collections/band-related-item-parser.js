@@ -1,35 +1,33 @@
 'use strict';
 import * as _ from 'lodash';
 
-export function BandRelatedItemParser(relatedResult) {
-  this._$relatedResultTr = relatedResult;
+export function BandRelatedItemParser($relatedResult) {
+  this._$relatedResultTr = $relatedResult;
 }
 
 _.extend(BandRelatedItemParser.prototype, {
   isValid: function() {
-    if (typeof this._$relatedResultTr.id === 'undefined') {
-      return false; // a 'show more' or 'no results' link.
-    }
-    return true;
+    return !!this._$relatedResultTr.attr('id');
   },
 
   getId: function() {
-    return this._$relatedResultTr.id.substr(this._$relatedResultTr.id.indexOf('_') + 1);
+    return this._$relatedResultTr.attr('id').substr(this._$relatedResultTr.attr('id').indexOf('_') + 1);
   },
 
   getFullName: function() {
-    return this._$relatedResultTr.td[0].a.content;
+    const a = this._$relatedResultTr.find("td:eq(0) > a");
+    return a.text();
   },
 
   getGenre: function() {
-    return this._$relatedResultTr.td[2];
+    return this._$relatedResultTr.find("td:eq(2)").text();
   },
 
   getCountry: function() {
-    return this._$relatedResultTr.td[1];
+    return this._$relatedResultTr.find("td:eq(1)").text();
   },
 
   getScore: function() {
-    return parseInt(this._$relatedResultTr.td[3].span.content, 10);
+    return parseInt(this._$relatedResultTr.find("td:eq(3) > span").text(), 10);
   }
 });

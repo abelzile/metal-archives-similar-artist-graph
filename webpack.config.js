@@ -6,34 +6,31 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/scripts/app/main.js',
-    vendor: ['jquery', 'jquery-ui', 'backbone', 'lodash']
+    app: './src/scripts/app/main.js'
   },
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist'),
     publicPath: '/'
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.txt$/,
-        use: 'raw-loader'
+        loader: 'raw-loader'
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("css-loader", "style-loader")
+        loader: ExtractTextPlugin.extract('css-loader', 'style-loader')
       },
       {
         test: /\.(gif|jpg|png)$/,
-        use: 'file-loader'
+        loader: 'file-loader'
       },
       {
-
         test: /\.html$/,
         loader: 'html-loader'
-      },
+      }
     ]
   },
   plugins: [
@@ -42,16 +39,17 @@ module.exports = {
       template: path.join(__dirname, 'src/index.html'),
       filename: 'index.html'
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.bundle.js'
-    }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery'",
-      "window.$": "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': "jquery'",
+      'window.$': 'jquery'
     }),
-    new ExtractTextPlugin("styles.css")
-  ]
+    new ExtractTextPlugin('styles.css'),
+  ],
+  resolve: {
+    alias: {
+      'underscore': 'lodash'
+    }
+  }
 };

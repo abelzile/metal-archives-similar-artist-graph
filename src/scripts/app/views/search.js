@@ -1,4 +1,5 @@
 'use strict';
+import * as _ from 'lodash';
 import Backbone from 'backbone';
 import { BandSearchQuery } from '../collections/band-search-query';
 import { SearchResultView } from './search-result';
@@ -47,7 +48,7 @@ export const SearchView = Backbone.View.extend({
     this.$tBody.empty();
     this.$count.text(this.collection.length + ' band(s) found.');
 
-    this.collection.forEach(this._renderOne, this);
+    _.forEach(this.collection.models, m => { this._renderOne(m) });
 
     this.$searchResults.show();
 
@@ -70,8 +71,6 @@ export const SearchView = Backbone.View.extend({
 
   _searchBtn: function() {
     const searchText = this.$searchInput.val();
-
-    console.log(searchText);
 
     if (this._isSearchValid(searchText)) {
       this._search(searchText);
