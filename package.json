@@ -37,6 +37,7 @@
     "lodash": "^4.17.4",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^1.0.0-beta.2",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }

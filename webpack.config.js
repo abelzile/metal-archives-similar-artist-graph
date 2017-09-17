@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const fs = require('fs');
 
 module.exports = {
   entry: {
@@ -45,7 +47,16 @@ module.exports = {
       'window.jQuery': "jquery'",
       'window.$': 'jquery'
     }),
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css'),
+    new UglifyJSPlugin(),
+    new webpack.BannerPlugin({
+      banner:
+        new Date().toLocaleDateString() +
+        ' ' +
+        new Date().toLocaleTimeString() +
+        '\n\n' +
+        fs.readFileSync('./LICENSE.txt', 'utf8')
+    })
   ],
   resolve: {
     alias: {
